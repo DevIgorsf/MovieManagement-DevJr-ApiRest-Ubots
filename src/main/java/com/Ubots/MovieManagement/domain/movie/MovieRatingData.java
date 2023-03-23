@@ -2,8 +2,8 @@ package com.Ubots.MovieManagement.domain.movie;
 
 import jakarta.validation.constraints.NotNull;
 
-public record MovieRegistrationData(
+public record MovieRatingData(
         @NotNull
-        String name,
-        Integer raviewMovie) {
+        Long id,
+        int movieReview) {
 }

@@ -32,6 +32,11 @@ public class MovieService {
 
     public MovieData updateMovie(MovieUpdateData movieUpdateData) {
         Movie movie = movieRepository.getReferenceById(movieUpdateData.id());
+
+        if(movieRepository.existsByName(movieUpdateData.name())) {
+            throw new DuplicatedEntityException("Esse filme já foi cadastrado!");
+        }
+
         movie.update(movieUpdateData);
 
         return new MovieData(movie);

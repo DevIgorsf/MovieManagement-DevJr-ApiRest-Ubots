@@ -21,8 +21,8 @@ public class Movie {
 
     public Movie(MovieRegistrationData movieRegistrationData) {
         this.name = movieRegistrationData.name();
-        if(movieRegistrationData.raviewMovie() != null) {
-            rateMovie(movieRegistrationData.raviewMovie());
+        if(movieRegistrationData.movieReview() != null) {
+            rateMovie(movieRegistrationData.movieReview());
         } else {
             this.movieReview = MovieReview.NAO_AVALIADO;
         }

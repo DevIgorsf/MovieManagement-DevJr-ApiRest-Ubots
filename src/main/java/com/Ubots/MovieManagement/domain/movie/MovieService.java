@@ -1,5 +1,6 @@
 package com.Ubots.MovieManagement.domain.movie;
 
+import com.Ubots.MovieManagement.infra.exception.DuplicatedEntityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,10 @@ public class MovieService {
 
     public MovieData movieRegistration(MovieRegistrationData movieRegistrationData) {
         Movie movie = new Movie(movieRegistrationData);
+
+        if(movieRepository.existsByName(movieRegistrationData.name())) {
+            throw new DuplicatedEntityException("Esse filme já foi cadastrado!");
+        }
 
         movieRepository.save(movie);
 

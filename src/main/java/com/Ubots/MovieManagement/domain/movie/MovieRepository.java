@@ -10,4 +10,6 @@ import java.util.List;
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     @Query("SELECT m FROM Movie m WHERE m.movieReview = 'NAO_AVALIADO'")
     List<Movie> findAllByMovieReviewNaoAvaliado();
+
+    boolean existsByName(String name);
 }
